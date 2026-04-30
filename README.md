@@ -114,3 +114,22 @@ graph TD
 - All private instances are unreachable from the internet; SSH flows through the bastion only
 - Bastion security group restricts port 22 to a single trusted IP
 - No credentials, keys, or sensitive values stored in this repository
+
+---
+
+## AWS Credit Usage
+
+I am running this lab on AWS credits. Below is my current spend.
+
+| Metric | Value |
+|--------|-------|
+| Credits used so far | $37.68 |
+
+Main cost drivers are the two `t3.medium` instances (Suricata and Splunk) and VPC Traffic Mirroring. I try to stop instances when not actively working in the lab to keep spend down.
+
+---
+
+## To-Do
+
+- Continue network traffic monitoring
+- Practice Splunk search queries

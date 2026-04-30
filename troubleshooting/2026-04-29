@@ -1,0 +1,47 @@
+--> was restarting Splunk, had an issue with Splunk conf checker not recognizing keys.
+- TA handles keys at runtime, need to check if inputs are actually working
+- later i will run sudo tail -20 /opt/splunk/var/log/splunk/splunk_ta_aws_aws_sqs_based_s3_cloudtrail-logs.log
+- i need to update inputs.conf with full URLS
+
+ubuntu@[ sensitive data lol ]:~$ sudo /opt/splunk/bin/splunk restart
+Stopping splunkd...
+Shutting down.  Please wait, as this may take a few minutes.
+
+Stopping splunk helpers...
+
+Done.
+splunkd.pid doesn't exist...
+
+Splunk> Australian for grep.
+
+Checking prerequisites...
+	Checking http port [8000]: open
+	Checking mgmt port [8089]: open
+	Checking appserver port [127.0.0.1:8065]: open
+	Checking kvstore port [8191]: open
+	Checking configuration... Done.
+New certs have been generated in '/opt/splunk/etc/auth'.
+	Checking critical directories...	Done
+	Checking indexes...
+		Validated: _audit _configtracker _dm_summary _dsappevent _dsclient _dsphonehome _internal _introspection _metrics _metrics_rollup _telemetry _thefishbucket aws_cloudtrail aws_flowlogs history linux_os main summary suricata
+	Done
+	Checking filesystem compatibility...  Done
+	Checking conf files for problems...
+		Invalid key in stanza [aws_sqs_based_s3://cloudtrail-logs] in /opt/splunk/etc/apps/Splunk_TA_aws/local/inputs.conf, line 3: aws_region (value: [ sensitive data lol ]).
+		Invalid key in stanza [aws_sqs_based_s3://cloudtrail-logs] in /opt/splunk/etc/apps/Splunk_TA_aws/local/inputs.conf, line 4: sqs_queue (value: [ sensitive data lol ]).
+		Invalid key in stanza [aws_sqs_based_s3://cloudtrail-logs] in /opt/splunk/etc/apps/Splunk_TA_aws/local/inputs.conf, line 9: use_dlq (value: false).
+		Invalid key in stanza [aws_sqs_based_s3://flowlogs-logs] in /opt/splunk/etc/apps/Splunk_TA_aws/local/inputs.conf, line 13: aws_region (value: [ sensitive data lol ]).
+		Invalid key in stanza [aws_sqs_based_s3://flowlogs-logs] in /opt/splunk/etc/apps/Splunk_TA_aws/local/inputs.conf, line 14: sqs_queue (value: [ sensitive data lol ]).
+		Invalid key in stanza [aws_sqs_based_s3://flowlogs-logs] in /opt/splunk/etc/apps/Splunk_TA_aws/local/inputs.conf, line 19: use_dlq (value: false).
+		Your indexes and inputs configurations are not internally consistent. For more information, run 'splunk btool check --debug'
+	Done
+	Checking default conf files for edits...
+	Validating installed files against hashes from '/opt/splunk/splunk-10.2.2-80b90d638de6-linux-amd64-manifest'
+	All installed files intact.
+	Done
+All preliminary checks passed.
+
+Starting splunk server daemon (splunkd)...  
+Done
+
+ubuntu@[ sensitive data lol ]:~$ 
